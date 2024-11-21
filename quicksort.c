@@ -7,7 +7,7 @@ int partition(int size, int* arr){
     int pivot = *(arr + size - 1);
     int partitionIndex = 0;
     for(int i = 0; i < size; i++){
-        if(*(arr + i) <= pivot){
+        if(arr[i] <= pivot){
             swap(arr + partitionIndex, arr + i);
             partitionIndex++;
         }
