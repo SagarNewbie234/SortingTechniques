@@ -15,9 +15,9 @@ void bubbleSort(int size, int* arr){
         // Start another loop from 0 to i
         for(int j = 0; j < i; j++){
             // Check if the current item is greater than the next item
-            if(*(arr + j) > *(arr + j + 1)){
+            if(arr[j] > arr[j+1]){
                 // If true, swap them and set swapped to true
-                swap(arr + j, arr + j + 1);
+                swap(&arr[j], &arr[j+1]);
                 swapped = true;
             }
             // The greatest element will shift to end, before the next greatest element

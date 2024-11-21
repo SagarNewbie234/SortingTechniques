@@ -14,29 +14,24 @@ void merge(int size, int mid, int* left, int* right, int* arr){
     while(i < lsize || j < rsize){
         // Check if the left half is exhausted or not, if yes copy all the remaining elements in right half to original array
         if(i == lsize && j < rsize){
-            *(arr + k) = *(right + j);
-            j++;
+            arr[k] = right[j++];
         }
         // Check if the right half is exhausted or not, if yes copy all the remaining elements in left half to original array
         else if(j == rsize && i < lsize){
-            *(arr + k) = *(left + i);
-            i++;
+            arr[k] = left[i++];
         }
         // If neither is true, i.e. both right half and left half are not exhausted, follow the nested conditions
         else{
             // If the unused element in left half is less than unused element in right half, copy the left half element
-            if(*(left + i) < *(right + j)){
-                *(arr + k) = *(left + i);
-                i++;
+            if(left[i] < right[i]){
+                arr[k] = left[i++];
             }
             // Otherwise, copy the right half element
             else{
-                *(arr + k) = *(right + j);
-                j++;
+                arr[k] = right[j++];
             }
         }
         k++;
-        // NOTE: Take care of the loop counters accurately
     }
 }
 
@@ -54,12 +49,12 @@ void mergeSort(int size, int* arr){
 
     // Copy the array elements in first half
     for(int i = 0; i < mid; i++){
-        left[i] = *(arr + i);
+        left[i] = arr[i];
     }
 
     // Copy the array elements in second half
     for(int i = mid; i < size; i++){
-        right[i - mid] = *(arr + i);
+        right[i - mid] = arr[i];
     }
 
     // Individually sort the first half
